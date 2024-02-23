@@ -1,16 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
+import { BrowserRouter,Routes,Route } from "react-router-dom"
+import Home from "./pages/Home.jsx";
+import SignIn from "./pages/SignIn.jsx";
+import SignUp from "./pages/SignUp.jsx";
+import Header from "./components/Header";
+import PrivateRoute from "./components/PrivateRoute.jsx";
+import { Toaster } from 'react-hot-toast';
+export default function App() {
   return (
-   <div>
-    <h1 className='text-blue-400'>App</h1>
-   </div>
+    <BrowserRouter>
+    <Toaster/>
+    <Header/>
+    <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/sign-in" element={<SignIn/>}/>
+      <Route path="/sign-up" element={<SignUp/>}/>
+      <Route element={<PrivateRoute/>} >
+
+      </Route>
+    </Routes>
+    </BrowserRouter>
   )
 }
-
-export default App
