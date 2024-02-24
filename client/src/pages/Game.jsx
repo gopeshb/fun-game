@@ -193,8 +193,8 @@ export default function Game() {
           </div>
           <div className='w-full'>
             <p>Total wins:-{currentUser.wins}</p>
-            <p>Totatl Losses:-{currentUser.losses}</p>
-            <p>Totatl Lives Available:-{lives} (no of diffuse cards increase lives of player)</p>
+            <p>Total Losses:-{currentUser.losses}</p>
+            <p>Total Lives Available:-{lives} (no of diffuse cards increase lives of player)</p>
           </div>
         </div>
       )}
