@@ -12,7 +12,7 @@ const userSlice=createSlice({
             state.currentUser=action.payload;
         },
           updateUserSuccess: (state, action) => {
-            state.currentUser = action.payload;
+            state.currentUser = { ...action.payload };
           },
           deleteUserSuccess: (state) => {
             state.currentUser = null;
@@ -21,9 +21,15 @@ const userSlice=createSlice({
           signOutUserSuccess: (state) => {
             state.currentUser = null;
           },
+          startGame: (state)=>{
+            state.currentUser.gameState=null;
+          },
+          endGame:(state,action)=>{
+            state.currentUser.gameState=null;
+          }
           
     }
 })
 export const{signInSuccess,updateUserSuccess,
-deleteUserSuccess,signOutUserSuccess}=userSlice.actions;
+deleteUserSuccess,signOutUserSuccess,startGame}=userSlice.actions;
 export default userSlice.reducer;

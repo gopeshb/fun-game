@@ -22,10 +22,18 @@ const userSchema= new mongoose.Schema({
         type:Number,
         default:0,
     },
-    loss:{
+    losses:{
         type:Number,
         default:0,
-    }
+    },
+    gameState:{
+        type:Number,
+        default:0,
+    },
+    lives:{
+        type:Number,
+        default:0,
+    },
 },{timestamps:true});
 const User = mongoose.model('User',userSchema);
 export default User;

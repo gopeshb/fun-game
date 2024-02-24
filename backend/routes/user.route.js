@@ -1,9 +1,8 @@
 import express from "express";
-import { test } from "../controllers/user.controller.js";
+import { updateGame,getUsers } from "../controllers/user.controller.js";
 import { verifyToken } from "../utils/verifyUser.js";
 const router=express.Router();
-router.get("/test",(req,res)=>{
-    test
-});
+router.put('/game/:id',verifyToken,updateGame);
+router.get('/get',verifyToken,getUsers);
 
 export default router;
