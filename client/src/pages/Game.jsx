@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUserSuccess } from '../redux/user/userSlice';
 import { toast } from 'react-hot-toast';
-const Loading = () => <p className='items-center'>Loading...</p>;
+const Loading = () => <p className='items-center text-center'>Loading...</p>;
 
 const GameResult = ({ status, onRestart }) => (
   <div className='gap-5 mx-auto'>
@@ -183,7 +183,6 @@ export default function Game() {
   };
   return (
     <div className='flex gap- justify-between  p-4'>
-      {loading && <Loading />}
       {gameStatus ? (
         <GameResult status={gameStatus} onRestart={restartHandler} />
       ) : (
@@ -195,12 +194,12 @@ export default function Game() {
           <div className='w-full'>
             <p>Total wins:-{currentUser.wins}</p>
             <p>Totatl Losses:-{currentUser.losses}</p>
+            <p>Totatl Lives Available:-{lives} (no of diffuse cards increase lives of player)</p>
           </div>
         </div>
       )}
       <div>
-      {loading && <Loading />}
-      {!loading && allUsers && <div className='m-3 p-auto border-2 border-white '>
+      { allUsers && <div className='m-3 p-auto border-2 border-white '>
         <h2 className='m-3 text-center font-bold'>Score Board</h2>
           {allUsers.map((user) => (
             <div className='gap-2 p-3' key={user._id}>
