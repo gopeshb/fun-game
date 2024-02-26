@@ -65,6 +65,7 @@ export default function Game() {
               handleSubmit(updatedUser);
             } else {
               setLives(lives - 1);
+              updatedUser.lives=updatedUser.lives-1;
               if (lives - 1 === 0) {
                 updatedUser.losses = updatedUser.losses + 1;
                 updatedUser.lives = 0;
@@ -76,7 +77,9 @@ export default function Game() {
           } else {
            
             if (lives > 0) {
+              updatedUser.lives = updatedUser.lives-1;
               setLives(lives - 1);
+              handleSubmit(updatedUser);
             } else {
               updatedUser.losses = updatedUser.losses + 1;
               updatedUser.lives = 0;
@@ -101,17 +104,17 @@ export default function Game() {
 
         case 'Defuse':
           setLives(lives + 1);
+          updatedUser.lives = updatedUser.lives + 1;
           if (deck === 4) {
             updatedUser.wins = updatedUser.wins + 1;
             setGameStatus('Won');
-            handleSubmit(updatedUser);
           }
+          handleSubmit(updatedUser);
           break;
 
         default:
           break;
       }
-      updatedUser.lives = lives;
       setUser(updatedUser);
     } catch (error) {
       console.log(error);
@@ -154,6 +157,7 @@ export default function Game() {
   };
 
   const handleSubmit = async (updatedUser) => {
+    console.log(updatedUser);
     try {
       const res = await fetch(`/api/user/game/${currentUser._id}`, {
         method: 'PUT',
